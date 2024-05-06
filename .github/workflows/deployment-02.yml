@@ -1,36 +1,32 @@
-name: Practice Deploy Project II
-on: [push, workflow_dispatch]
+name: Practice Project II
+on: push
 jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Get code
+        uses: actions/checkout@v4
+      - name: Install dependencies
+        run: npm ci
+      - name: Lint
+        run: npm run lint 
   test:
     runs-on: ubuntu-latest
-    steps:
+    steps: 
       - name: Get code
         uses: actions/checkout@v4
-      - name: Install NodeJS
-        uses: actions/setup-node@v4
-        with: 
-          node-version: 20
       - name: Install dependencies
         run: npm ci
-      - name: Build project
-        run: npm run build
-    #   - name: Run lint
-    #     run: npm run lint
       - name: Run tests
-        run: npm test
+        run: npm test   
   deploy:
-    # needs: test
     runs-on: ubuntu-latest
     steps:
       - name: Get code
         uses: actions/checkout@v4
-      - name: Install NodeJS
-        uses: actions/setup-node@v4
-        with: 
-          node-version: 20
       - name: Install dependencies
         run: npm ci
-      - name: Build project
+      - name: Build code
         run: npm run build
-      - name: Deploy
-        run: echo "Deploying ..."
+      - name: Deploy code
+        run: echo "Deployning ..."
