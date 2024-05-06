@@ -1,5 +1,5 @@
 name: Practice Deploy Project II
-on: [push, workflow_dipatch]
+on: [push, workflow_dispatch]
 jobs:
   test:
     runs-on: ubuntu-latest
